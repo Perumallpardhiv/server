@@ -125,10 +125,10 @@ io.on('connection', (socket) => {
         }
     });
 
-    socket.on('playAgain', async ({ 'roomId': roomId }) => {
+    socket.on('playAgain', async ({ 'roomId': roomId, 'displayElements': displayElements }) => {
         try {
             let room = await Room.findById(roomId);
-            room.displayElements = ['', '', '', '', '', '', '', '', ''];
+            room.displayElements = displayElements;
             room.currentRound += 1;
             // room.turn = room.players[0];
             // room.turnIndex = 0;
